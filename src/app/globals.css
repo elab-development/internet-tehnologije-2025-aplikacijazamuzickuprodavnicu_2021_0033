@@ -1,0 +1,195 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #AD8B73;
+  --color-secondary: #CEAB93;
+  --color-accent: #E3CAA5;
+  --color-bg: #FFFBE9;
+  --color-text: #4a3f35;
+}
+
+@layer base {
+
+  html,
+  body {
+    background-color: #FFFBE9;
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    min-height: 100% !important;
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+}
+
+@layer components {
+  .site-header {
+    @apply w-full block relative;
+    background-color: var(--color-primary);
+    z-index: 1000 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .site-nav {
+    @apply max-w-7xl mx-auto flex items-center justify-between px-6 py-4;
+    min-height: 80px;
+  }
+
+  .nav-links {
+    @apply flex items-center gap-6 md:gap-8;
+  }
+
+  .nav-link {
+    @apply font-semibold transition-colors text-white whitespace-nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-logo {
+    @apply flex items-center flex-shrink-0;
+  }
+
+  .naslov-sekcije {
+    @apply text-4xl md:text-5xl font-bold mb-16 text-center uppercase tracking-[0.2em];
+    color: var(--color-text);
+    position: relative;
+    display: block;
+  }
+}
+
+@layer components {
+  .auth-wrap {
+    @apply w-full flex flex-col items-center justify-center p-4 md:p-10;
+    min-height: 100vh;
+    background-color: #E3CAA5;
+    overflow-y: visible !important;
+  }
+
+  .auth-card {
+    @apply w-full max-w-[400px] p-8 rounded-3xl shadow-2xl;
+    background-color: #FFFBE9;
+    height: auto !important;
+  }
+
+  .auth-label {
+    @apply block text-sm font-bold mb-1 ml-1;
+    color: #AD8B73;
+  }
+
+  .auth-input {
+    @apply w-full px-4 py-3 rounded-2xl border border-[#E3CAA5] transition-all outline-none text-base bg-white;
+    color: #4a3f35;
+  }
+
+  .auth-input:focus {
+    @apply ring-2 ring-[#CEAB93] border-[#AD8B73];
+  }
+
+  .auth-btn {
+    @apply w-full py-4 rounded-2xl font-bold text-white transition-all active:scale-[0.98] flex items-center justify-center gap-2 mt-2 shadow-md hover:shadow-lg;
+    background-color: #AD8B73;
+  }
+
+  .auth-error-alert {
+    @apply bg-red-100 text-red-600 p-3 rounded-xl text-center mb-4 text-sm font-bold animate-pulse;
+  }
+}
+
+.glavna-fade {
+  opacity: 0.9;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  width: 100%;
+}
+
+.slider-container::before,
+.slider-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.slider-container::before {
+  left: 0;
+  background: linear-gradient(to right, #FFFBE9 15%, rgba(255, 251, 233, 0) 100%);
+}
+
+.slider-container::after {
+  right: 0;
+  background: linear-gradient(to left, #FFFBE9 15%, rgba(255, 251, 233, 0) 100%);
+}
+
+.slider-track,
+.slider-track-reverse {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  padding: 10px 0;
+}
+
+.slider-track {
+  animation: marquee 40s linear infinite;
+}
+
+.slider-track-reverse {
+  animation: marquee-reverse 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes softFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float-item {
+  animation: softFloat 5s ease-in-out infinite;
+}
+
+.trajna-sminka-card {
+  @apply relative overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 bg-white;
+}
+
+.trajna-sminka-card:hover {
+  @apply scale-105 shadow-2xl;
+}
