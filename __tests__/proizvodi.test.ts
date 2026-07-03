@@ -41,6 +41,8 @@ vi.mock('@/db/index', () => {
     orderBy: vi.fn().mockReturnThis(),
     limit: vi.fn().mockReturnThis(),
     groupBy: vi.fn().mockReturnThis(),
+    update: vi.fn().mockReturnThis(),
+    set: vi.fn().mockReturnThis(),
     then: (resolve: (value: unknown[]) => void) => Promise.resolve([mockProizvod]).then(resolve),
     transaction: vi.fn(async (cb: (tx: unknown) => Promise<unknown>) => {
       const txMock = {
